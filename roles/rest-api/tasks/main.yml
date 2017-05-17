@@ -34,7 +34,7 @@
         "email": "demouser1@example.com"
       }
   register: restreturn
-  when: not 'demouser1' in {{ restdata.results | map(attribute='username') | list }}
+  when: not 'demouser1' in restdata.results | map(attribute='username') | list
 
 - name: rest-api | Output rest return data
   debug:
