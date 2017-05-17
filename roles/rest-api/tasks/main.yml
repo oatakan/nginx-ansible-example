@@ -1,0 +1,35 @@
+---
+- name: rest-api | List Ansible Tower users
+  uri:
+    url: https://{{ rest_url }}/api/v1/users/
+    method: GET
+    user: "{{ rest_username }}"
+    password: "{{ rest_password }}"
+    force_basic_auth: yes
+    validate_certs: no
+  register: restdata
+
+- name: rest-api | Output rest data
+  debug: msg="{{ restdata.json }}"
+
+- name: rest-api | Add a new Ansible Tower user
+  uri:
+    url: https://{{ rest_url }}/api/v1/users/
+    method: POST
+    user: "{{ rest_username }}"
+    password: "{{ rest_password }}"
+    force_basic_auth: yes
+    validate_certs: no
+    HEADER_Content-Type: application/json
+    HEADER_Accept: :application/json,version=2
+    body: >
+      {
+        "username": "demouser1",
+        "first_name": "demo",
+        "last_name": "user1",
+        "email": "demouser1@example.com"
+      }
+  register: restreturn
+
+- name: rest-api | Output rest return data
+    debug: msg="{{ restreturn }}"

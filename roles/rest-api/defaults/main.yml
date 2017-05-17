@@ -1,0 +1,7 @@
+---
+rest_url: localhost
+clientenvironment: production
+rest_username: "{{ ansible_username }}"
+rest_password: "{{ ansible_password }}"
+
+test_user_json: abc
