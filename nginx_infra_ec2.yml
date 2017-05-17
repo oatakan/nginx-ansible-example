@@ -1,0 +1,6 @@
+- hosts: localhost
+  become: no
+  vars_files:
+    - nginx-nodes-ec2.yml
+  roles:
+    - ansible-role-ec2

@@ -1,0 +1,7 @@
+- src: https://github.com/oatakan/ansible-role-ec2
+  version: origin/master
+
+- src: jdauphant.ssl-certs
+
+- src: jdauphant.nginx
+
