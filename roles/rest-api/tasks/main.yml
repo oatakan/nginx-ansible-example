@@ -11,11 +11,12 @@
 
 - name: rest-api | Output rest data
   debug:
-    msg: "{{ restdata.json }}"
+    msg: "{{ restdata }}"
 
 - name: rest-api | Output usernames only
   debug:
-    msg: "{{ restdata.results | map(attribute='username') | list }}"
+    msg: "{{ item }}"
+  with_items: "{{ restdata.results }}"
 
 - name: rest-api | Add a new Ansible Tower user
   uri:
