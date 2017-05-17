@@ -11,12 +11,12 @@
 
 - name: rest-api | Output rest data
   debug:
-    msg: "{{ restdata }}"
+    msg: "{{ restdata.json }}"
 
 - name: rest-api | Output usernames only
   debug:
     msg: "{{ item }}"
-  with_items: "{{ restdata.results }}"
+  with_items: "{{ restdata.json.results }}"
 
 - name: rest-api | Add a new Ansible Tower user
   uri:
@@ -39,7 +39,7 @@
         "email": "demouser1@example.com"
       }
   register: restreturn
-  when: not 'demouser1' in restdata | map(attribute='username') | list
+  when: not 'demouser1' in restdata.json.results | map(attribute='username') | list
 
 - name: rest-api | Output rest return data
   debug:
