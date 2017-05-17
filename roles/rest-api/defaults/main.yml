@@ -4,4 +4,8 @@ clientenvironment: production
 rest_username: "{{ ansible_username }}"
 rest_password: "{{ ansible_password }}"
 
-test_user_json: abc
+demo_user_2:
+  - username: demouser2
+    first_name: demo
+    last_name: user2
+    email: demouser2@example.com

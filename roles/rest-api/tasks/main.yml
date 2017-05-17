@@ -10,7 +10,8 @@
   register: restdata
 
 - name: rest-api | Output rest data
-  debug: msg="{{ restdata.json }}"
+  debug:
+    msg: "{{ restdata.json }}"
 
 - name: rest-api | Add a new Ansible Tower user
   uri:
@@ -32,4 +33,5 @@
   register: restreturn
 
 - name: rest-api | Output rest return data
-    debug: msg="{{ restreturn }}"
+  debug:
+    msg: "{{ restreturn }}"
