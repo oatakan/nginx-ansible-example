@@ -36,33 +36,6 @@
   register: restreturn
   when: not 'demouser1' in restdata.json.results | map(attribute='username') | list
 
-- name: rest-api | Output rest return data
-  debug:
-    msg: "{{ restreturn }}"
-
-- name: rest-api | Add a new user demouser1
-  uri:
-    url: https://{{ rest_url }}/api/v1/users/
-    method: POST
-    user: "{{ rest_username }}"
-    password: "{{ rest_password }}"
-    force_basic_auth: yes
-    validate_certs: no
-    status_code: 201
-    body_format: json
-    headers:
-      Content-Type: application/json
-    body: >
-      {
-        "username": "demouser1",
-        "password": "demo",
-        "first_name": "demo",
-        "last_name": "user1",
-        "email": "demouser1@example.com"
-      }
-  register: restreturn1
-  when: not 'demouser1' in restdata.json.results | map(attribute='username') | list
-
 - name: rest-api | Add a new user {{ demo_user_2.username }}
   uri:
     url: https://{{ rest_url }}/api/v1/users/
