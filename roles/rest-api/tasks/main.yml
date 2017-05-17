@@ -21,7 +21,7 @@
     password: "{{ rest_password }}"
     force_basic_auth: yes
     validate_certs: no
-    status_code: 302
+    status_code: 201
     body_format: json
     headers:
       Content-Type: application/json
@@ -34,6 +34,7 @@
         "email": "demouser1@example.com"
       }
   register: restreturn
+  when: not 'demouser1' in {{ restdata.results | map(attribute='username') | list }}
 
 - name: rest-api | Output rest return data
   debug:
