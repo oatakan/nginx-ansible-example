@@ -1,6 +1,5 @@
-- hosts: tag_role_nginx:&tag_app_nginx_standalone
+- hosts: localhost
   become: no
-  delegate_to: 127.0.0.1
   roles:
     - rest-api
 
