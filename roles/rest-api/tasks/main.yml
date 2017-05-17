@@ -15,7 +15,7 @@
 
 - name: rest-api | Output usernames only
   debug:
-    msg: "{{ restdata | map(attribute='username') | list }}"
+    msg: "{{ restdata.results | map(attribute='username') | list }}"
 
 - name: rest-api | Add a new Ansible Tower user
   uri:
