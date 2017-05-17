@@ -1,6 +1,4 @@
-- hosts: tag_role_nginx:&tag_app_nginx_standalone:&"{{ environment }}"
-  vars:
-    environment: test
+- hosts: tag_role_nginx:&tag_app_nginx_standalone
   roles:
     - jdauphant.ssl-certs
     - role: jdauphant.nginx
