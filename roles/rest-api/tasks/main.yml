@@ -75,7 +75,7 @@
     body_format: json
     headers:
       Content-Type: application/json
-    body: "{{ item.username | to_json }}"
+    body: "{{ item | to_json }}"
   register: restreturn2
   when: not item.username in restdata.json.results | map(attribute='username') | list
   with_items: "{{ demo_users }}"
