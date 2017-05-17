@@ -21,7 +21,7 @@
     password: "{{ rest_password }}"
     force_basic_auth: yes
     validate_certs: no
-    status_code: 201
+    status_code: 302
     headers:
       Content-Type: application/json
     body: >
