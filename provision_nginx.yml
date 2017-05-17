@@ -3,7 +3,7 @@
     environment: test
   roles:
     - jdauphant.ssl-certs
-    - jdauphant.nginx
+    - role: jdauphant.nginx
       nginx_configs:
         ssl:
           - ssl_certificate_key {{ssl_certs_privkey_path}}
