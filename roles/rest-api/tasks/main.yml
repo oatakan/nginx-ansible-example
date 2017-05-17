@@ -63,11 +63,6 @@
   register: restreturn1
   when: not 'demouser1' in restdata.json.results | map(attribute='username') | list
 
-- name: rest-api | Output rest return data
-  debug:
-    msg: "{{ restreturn1 }}"
-  when: restreturn1 is defined
-
 - name: rest-api | Add a new user {{ demo_user_2.username }}
   uri:
     url: https://{{ rest_url }}/api/v1/users/
@@ -80,11 +75,7 @@
     body_format: json
     headers:
       Content-Type: application/json
-    body: "{{ demo_user_2 | to_json }}"
+    body: "{{ item.username | to_json }}"
   register: restreturn2
-  when: not demo_user_2.username in restdata.json.results | map(attribute='username') | list
-
-- name: rest-api | Output rest return data
-  debug:
-    msg: "{{ restreturn2 }}"
-  when: restreturn2 is defined
+  when: not item.username in restdata.json.results | map(attribute='username') | list
+  with_items: "{{ demo_users }}"

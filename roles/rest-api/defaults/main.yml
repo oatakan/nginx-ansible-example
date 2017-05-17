@@ -4,7 +4,7 @@ clientenvironment: production
 rest_username: "abc"
 rest_password: "abc"
 
-demo_user_2:
+demo_users:
   - username: demouser2
     password: demo
     first_name: demo
