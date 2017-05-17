@@ -1,8 +1,7 @@
 ---
-rest_url: localhost
-clientenvironment: production
-rest_username: "abc"
-rest_password: "abc"
+rest_url: "{{ lookup('env', 'VMWARE_HOST') | default('localhost') }}"
+rest_username: "{{ lookup('env', 'VMWARE_USER') }}"
+rest_password: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
 
 demo_users:
   - username: demouser2
