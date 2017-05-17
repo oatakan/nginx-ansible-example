@@ -1,8 +1,8 @@
 ---
 rest_url: localhost
 clientenvironment: production
-rest_username: "{{ ansible_ssh_user }}"
-rest_password: "{{ ansible_ssh_pass }}"
+rest_username: "abc"
+rest_password: "abc"
 
 demo_user_2:
   - username: demouser2
