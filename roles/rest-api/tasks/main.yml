@@ -13,6 +13,10 @@
   debug:
     msg: "{{ restdata.json }}"
 
+- name: rest-api | Output usernames only
+  debug:
+    msg: "{{ restdata | map(attribute='username') | list }}"
+
 - name: rest-api | Add a new Ansible Tower user
   uri:
     url: https://{{ rest_url }}/api/v1/users/
