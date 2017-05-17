@@ -1,5 +1,9 @@
 - hosts: tag_role_nginx:&tag_app_nginx_standalone
   pre_tasks:
+    - name: install epel
+      yum:
+        name: https://dl.fedoraproject.org/pub/epel/7/x86_64/
+        state: present
     - name: add www-data user
       user:
         name: www-data
