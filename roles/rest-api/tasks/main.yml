@@ -25,6 +25,7 @@
     body: >
       {
         "username": "demouser1",
+        "password": "demo",
         "first_name": "demo",
         "last_name": "user1",
         "email": "demouser1@example.com"
