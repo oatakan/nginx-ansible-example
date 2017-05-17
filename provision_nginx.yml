@@ -2,7 +2,7 @@
   pre_tasks:
     - name: install epel
       yum:
-        name: https://dl.fedoraproject.org/pub/epel/7/x86_64/
+        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
         state: present
     - name: add www-data user
       user:
