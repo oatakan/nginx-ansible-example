@@ -21,7 +21,9 @@
     password: "{{ rest_password }}"
     force_basic_auth: yes
     validate_certs: no
-    HEADER_Content-Type: application/json
+    status_code: 201
+    headers:
+      Content-Type: application/json
     body: >
       {
         "username": "demouser1",
