@@ -1,4 +1,10 @@
 - hosts: tag_role_nginx:&tag_app_nginx_standalone
+  pre_tasks:
+    - name: add www-data user
+      user:
+        name: www-data
+        state: present
+
   roles:
     - jdauphant.ssl-certs
     - role: jdauphant.nginx
