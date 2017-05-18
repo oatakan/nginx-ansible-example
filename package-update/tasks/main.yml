@@ -1,36 +1,36 @@
 ---
-- name: package-update | install epel
+- name: Install epel
   yum:
     name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
     state: present
 
-- name: install old version of perl
+- name: Install old version of perl
   yum:
     name: perl-5.16.3-286.el7
     state: present
 
-- name: package-update | List packages
+- name: List packages
   yum:
     list=installed
   register: yum_packages
 
-- name: package-update | Check perl version
+- name: Check perl version
   debug: var=item
   with_items: "{{ yum_packages|json_query(jsonquery) }}"
   vars:
     jsonquery: "results[?name=='perl']"
 
-- name: package-update | Update python
+- name: Update python
   yum:
     name: perl
     state: latest
 
-- name: package-update | List packages
+- name: List packages
   yum:
     list=installed
   register: yum_packages
 
-- name: package-update | Check perl version
+- name: Check perl version
   debug: var=item
   with_items: "{{ yum_packages|json_query(jsonquery) }}"
   vars:
