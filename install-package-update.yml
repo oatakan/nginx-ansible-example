@@ -1,0 +1,4 @@
+- hosts: tag_role_nginx:&tag_app_nginx_standalone
+  roles:
+    - package-update
+

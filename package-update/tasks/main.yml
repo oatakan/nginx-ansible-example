@@ -1,0 +1,33 @@
+---
+- name: package-update | List packages
+  yum:
+    list=installed
+  register: yum_packages
+
+- debug:
+    var: yum_packages
+
+- debug: var=item
+  with_items: "{{ yum_packages|json_query(jsonquery) }}"
+  vars:
+    jsonquery: "results[?name=='python']"
+
+- name: package-update | Update python
+  yum:
+    name: python
+    state: latest
+
+- name: package-update | List packages
+  yum:
+    list=installed
+  register: yum_packages
+
+- debug:
+    var: yum_packages
+
+- debug: var=item
+  with_items: "{{ yum_packages|json_query(jsonquery) }}"
+  vars:
+    jsonquery: "results[?name=='python']"
+
+

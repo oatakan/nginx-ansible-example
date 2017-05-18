@@ -1,0 +1,8 @@
+---
+- name: os-update | Ensure deltarpm installed
+  yum: name=deltarpm state=latest
+
+- name: os-update | Update CentOS packages
+  yum: name=* state=latest update_cache=yes
+
+
