@@ -1,5 +1,5 @@
 ---
-- name: rest-api | List Ansible Tower users
+- name: List Ansible Tower users
   uri:
     url: https://{{ rest_url }}/api/v1/users/
     method: GET
@@ -9,11 +9,11 @@
     validate_certs: no
   register: restdata
 
-- name: rest-api | Output rest data
+- name: Output rest data
   debug:
     msg: "{{ restdata.json }}"
 
-- name: rest-api | Add a new Ansible Tower user
+- name: Add a new Ansible Tower user
   uri:
     url: https://{{ rest_url }}/api/v1/users/
     method: POST
@@ -36,7 +36,7 @@
   register: restreturn
   when: not 'demouser1' in restdata.json.results | map(attribute='username') | list
 
-- name: rest-api | Add a new user {{ demo_user_2.username }}
+- name: Add a new user {{ demo_user_2.username }}
   uri:
     url: https://{{ rest_url }}/api/v1/users/
     method: POST

@@ -1,14 +1,14 @@
 ---
-- name: custom-service | Install script
+- name: Install script
   copy:
     src: customservice.sh
     dest: /root/
     mode: "u+rwx,g+x,o+x"
 
-- name: custom-service | Create Unit file
+- name: Create Unit file
   template: src=customservice.service.j2 dest=/lib/systemd/system/customservice.service mode=644
   notify:
     - reload systemctl
 
-- name: custom-service | Start customservice
+- name: Start customservice
   service: name=customservice.service state=started enabled=yes
