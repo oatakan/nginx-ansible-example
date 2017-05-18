@@ -1,8 +1,33 @@
 ---
+- debug:
+    msg: "Distribution: {{ ansible_distribution }}"
+
+- debug:
+    msg: "Distribution major version: {{ ansible_distribution_major_version }}"
+
+- debug:
+    msg: "Distribution release: {{ ansible_distribution_release }}"
+
+- debug:
+    msg: "Distribution version: {{ ansible_distribution_version }}"
+
 - name: os-update | Ensure deltarpm installed
   yum: name=deltarpm state=latest
 
 - name: os-update | Update CentOS packages
   yum: name=* state=latest update_cache=yes
 
+- debug:
+    msg: "Post upgrade output"
 
+- debug:
+    msg: "Distribution: {{ ansible_distribution }}"
+
+- debug:
+    msg: "Distribution major version: {{ ansible_distribution_major_version }}"
+
+- debug:
+    msg: "Distribution release: {{ ansible_distribution_release }}"
+
+- debug:
+    msg: "Distribution version: {{ ansible_distribution_version }}"
