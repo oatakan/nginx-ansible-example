@@ -20,7 +20,7 @@
   vars:
     jsonquery: "results[?name=='perl']"
 
-- name: Update python
+- name: Update perl
   yum:
     name: perl
     state: latest
