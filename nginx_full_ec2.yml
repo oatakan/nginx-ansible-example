@@ -5,7 +5,7 @@
   tasks:
     - name: Add hosts to groups
       add_host:
-        name: "{{ item.invocation.module_args.instance_tags.name }}"
+        name: "{{ item.tagged_instances[0].public_ip }}"
         ansible_host: "{{ item.tagged_instances[0].public_ip }}"
         groups: tag_role_nginx,tag_app_nginx_standalone
       with_items: "{{ instances.results }}"
