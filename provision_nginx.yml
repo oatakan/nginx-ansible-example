@@ -31,8 +31,9 @@
 
     - name: proper response from nginx is received
       uri:
-        url: http://{{ inventory_hostname }}/Template.html
+        url: https://{{ inventory_hostname }}/Template.html
         return_content: yes
+        validate_certs: no
       register: response
       until: "'ABC Config Mgt' in response.content"
       retries: 10
