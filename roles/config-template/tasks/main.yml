@@ -1,18 +1,27 @@
 ---
 - name: Install ntp
-  yum: name=ntp state=present
+  yum:
+    name: ntp
+    state: present
   tags: ntp
 
 - name: Configure ntp file
-  template: src=ntp.conf.j2 dest=/etc/ntp.conf
+  template:
+    src: ntp.conf.j2
+    dest: /etc/ntp.conf
   tags: ntp
   notify: restart ntp
 
 - name: Start and enable NTP
-  service: name=ntpd state=started enabled=yes
+  service:
+    name: ntpd
+    state: started
+    enabled: yes
   tags: ntp
 
 - name: Add motd
-  template: src=motd.j2 dest=/etc/motd
+  template:
+    src: motd.j2
+    dest: /etc/motd
   tags: motd
 
