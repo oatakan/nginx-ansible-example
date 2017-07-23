@@ -42,6 +42,6 @@
 
     - name: output url
       debug:
-        msg: "application is available at http://{{ inventory_hostname }}/Template.html"
+        msg: 'application is available at <a href="https://{{ inventory_hostname }}/Template.html">https://{{ inventory_hostname }}/Template.html</a>'
       when: response | success
 
