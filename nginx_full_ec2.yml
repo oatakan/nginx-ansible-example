@@ -15,3 +15,5 @@
         - addhost
 
 - include: provision_nginx.yml
+
+- include: nginx_domain.yml
