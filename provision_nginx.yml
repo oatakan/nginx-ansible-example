@@ -29,3 +29,18 @@
         src: Template.html.j2
         dest: /usr/share/nginx/html/Template.html
 
+    - name: proper response from nginx is received
+      uri:
+        url: http://{{ inventory_hostname }}/Template.html
+        return_content: yes
+      register: response
+      until: "'ABC Config Mgt' in response.content"
+      retries: 10
+      delay: 1
+      ignore_errors: yes
+
+    - name: output url
+      debug:
+        msg: "application is avaible at http://{{ inventory_hostname }}/Template.html"
+      when: response | success
+
