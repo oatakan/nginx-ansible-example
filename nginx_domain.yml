@@ -28,4 +28,3 @@
     - name: output url
       debug:
         msg: 'application is available at https://{{ subdomain | default(instances.results[0].invocation.module_args.instance_tags.role | lower) }}.{{ ec2_name_prefix | lower }}.{{ hosted_zone_domain_name }}/Template.html'
-      when: response | success
