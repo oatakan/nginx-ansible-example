@@ -27,21 +27,21 @@
     - name: copy Template.html
       template:
         src: Template.html.j2
-        dest: /usr/share/nginx/html/Template.html
+        dest: /usr/share/nginx/html/index.html
 
     - name: proper response from nginx is received
       uri:
-        url: https://{{ inventory_hostname }}/Template.html
+        url: https://{{ inventory_hostname }}/
         return_content: yes
         validate_certs: no
       register: response
-      until: "'ABC Config Mgt' in response.content"
+      until: "'This is the sites URL' in response.content"
       retries: 10
       delay: 1
       ignore_errors: yes
 
     - name: output url
       debug:
-        msg: 'application is available at https://{{ inventory_hostname }}/Template.html'
+        msg: 'application is available at https://{{ inventory_hostname }}/'
       when: response | success
 

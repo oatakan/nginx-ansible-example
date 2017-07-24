@@ -1,10 +1,10 @@
 <html>
 	<head>
-		<title>ABC Config Mgt. Demo</title>
+		<title>{{ html_title | default ('ABC Config Mgt. Demo') }}</title>
 	</head>
 	<body>
 	
-		<h1>ABC Config Mgt. Demo</h1>
+		<h1>{{ html_title | default ('ABC Config Mgt. Demo') }}</h1>
 		
 		<h3>This is the servers IP address:</h3>
 		<div>{{ inventory_hostname }}</div>
