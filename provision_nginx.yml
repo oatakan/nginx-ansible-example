@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: tag_role_nginx:&tag_app_nginx_standalone
   pre_tasks:
     - name: install epel
       yum:
