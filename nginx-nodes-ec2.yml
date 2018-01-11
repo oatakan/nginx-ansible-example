@@ -3,6 +3,7 @@ nodes:
   - name: nginx
     role: nginx
     app_name: nginx_standalone
+    pod_name: "{{ ec2_name_prefix }}"
     instance_type: t2.micro
     #image: ami-85241def #rhel7
     image: ami-61bbf104 #centos7
