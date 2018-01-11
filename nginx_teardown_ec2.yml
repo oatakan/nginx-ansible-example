@@ -23,6 +23,7 @@
         type: A
       register: routerelbrec
       when: hosted_zone_domain_name is defined and ec2_name_prefix is defined
+      ignore_errors: yes
 
     - name: Delete Router ELB DNS Entry if it doesn't exist
       route53:
@@ -33,3 +34,4 @@
         type: A
         value: "{{ ec2_instances.instances[0].public_ip_address }}"
       when: routerelbrec.set is defined and "{} != routerelbrec.set"
+      ignore_errors: yes
