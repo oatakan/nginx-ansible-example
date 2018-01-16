@@ -1,0 +1,19 @@
+- hosts: localhost
+  become: no
+  vars_files:
+    - nginx-nodes-ec2.yml
+  roles:
+    - ansible-role-ec2
+    - syncrou.manageiq-vmdb
+
+  tasks:
+    - debug:
+        var: manageiq
+
+    - debug:
+        msg: "manage iq service id: {{ manageiq.service }}"
+
+    #- name: Get a vmdb object
+    #  manageiq_vmdb:
+    #    href: "services/80"
+    #  register: vmdb_object
