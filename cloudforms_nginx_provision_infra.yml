@@ -2,6 +2,8 @@
   become: no
   vars_files:
     - nginx-nodes-ec2.yml
+  vars:
+    cf_provider_id: 99000000000004
   roles:
     - ansible-role-ec2
     - syncrou.manageiq-vmdb
@@ -13,7 +15,18 @@
     - debug:
         msg: "manage iq service id: {{ manageiq.service }}"
 
-    #- name: Get a vmdb object
-    #  manageiq_vmdb:
-    #    href: "services/80"
-    #  register: vmdb_object
+    - name: get a vmdb object
+      manageiq_vmdb:
+        href: "{{ manageiq.service }}"
+      register: vmdb_object
+
+    - name: link service via an object
+      manageiq_vmdb:
+        vmdb: "{{ vmdb_object }}"
+        action: add_provider_vms
+        data:
+          uid_ems:
+            - "{{ item.tagged_instances[0].id }}"
+          provider:
+            id: "{{ cf_provider_id }}"
+      with_items: "{{ instances.results }}"
