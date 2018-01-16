@@ -15,6 +15,13 @@
     - debug:
         msg: "manage iq service id: {{ manageiq.service }}"
 
+    - name: set the manageiq connection variable
+      set_fact:
+        manageiq_connection:
+          url: "{{ manageiq.url }}"
+          token: "{{ manageiq.token }}"
+          manageiq_validate_certs: false
+
     - name: get a vmdb object
       manageiq_vmdb:
         href: "{{ manageiq.service }}"
