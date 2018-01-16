@@ -18,8 +18,8 @@
     - name: set the manageiq connection variable
       set_fact:
         manageiq_connection:
-          api_url: "{{ manageiq.url }}"
-          api_token: "{{ manageiq.token }}"
+          url: "{{ manageiq.api_url }}"
+          token: "{{ manageiq.api_token }}"
           manageiq_validate_certs: false
 
     - name: get a vmdb object
