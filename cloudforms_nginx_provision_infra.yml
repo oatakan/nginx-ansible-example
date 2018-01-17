@@ -3,55 +3,60 @@
   vars_files:
     - nginx-nodes-ec2.yml
   vars:
-    cf_provider_id: 99000000000004
+    provider_id: 99000000000004
   roles:
     - ansible-role-ec2
-    - syncrou.manageiq-vmdb
+    # for CF 4.5
+    - cloudforms-refresh-provider
+    - cloudforms-link-service
+    # for CF 4.6
+    #- syncrou.manageiq-vmdb
 
-  tasks:
-    - debug:
-        var: manageiq
-
-    - debug:
-        msg: "manage iq service id: {{ manageiq.service }}"
-
-    - name: set the manageiq connection variable
-      set_fact:
-        manageiq_connection:
-          url: "{{ manageiq.api_url }}"
-          token: "{{ manageiq.api_token }}"
-          manageiq_validate_certs: false
-          force_basic_auth: false
-          username: ''
-          password: ''
-          group: ''
-          X_MIQ_Group: ''
-          client_cert: ''
-          client_key: ''
-
-    - name: get a vmdb object
-      manageiq_vmdb:
-        href: "{{ manageiq.service }}"
-      register: vmdb_object
-
-    - name: Service Linking via an href slug
-      manageiq_vmdb:
-        href: "href_slug::{{ manageiq.service }}"
-        action: add_provider_vms
-        data:
-          uid_ems:
-            - "{{ item.tagged_instances[0].id }}"
-          provider:
-            id: "{{ cf_provider_id }}"
-      with_items: "{{ instances.results }}"
-
-    - name: link service via an object
-      manageiq_vmdb:
-        vmdb: "{{ vmdb_object }}"
-        action: add_provider_vms
-        data:
-          uid_ems:
-            - "{{ item.tagged_instances[0].id }}"
-          provider:
-            id: "{{ cf_provider_id }}"
-      with_items: "{{ instances.results }}"
+# for CF 4.6
+#  tasks:
+#    - debug:
+#        var: manageiq
+#
+#    - debug:
+#        msg: "manage iq service id: {{ manageiq.service }}"
+#
+#    - name: set the manageiq connection variable
+#      set_fact:
+#        manageiq_connection:
+#          url: "{{ manageiq.api_url }}"
+#          token: "{{ manageiq.api_token }}"
+#          manageiq_validate_certs: false
+#          force_basic_auth: false
+#          username: ''
+#          password: ''
+#          group: ''
+#          X_MIQ_Group: ''
+#          client_cert: ''
+#          client_key: ''
+#
+#    - name: get a vmdb object
+#      manageiq_vmdb:
+#        href: "{{ manageiq.service }}"
+#      register: vmdb_object
+#
+#    - name: Service Linking via an href slug
+#      manageiq_vmdb:
+#        href: "href_slug::{{ manageiq.service }}"
+#        action: add_provider_vms
+#        data:
+#          uid_ems:
+#            - "{{ item.tagged_instances[0].id }}"
+#          provider:
+#            id: "{{ provider_id }}"
+#      with_items: "{{ instances.results }}"
+#
+#    - name: link service via an object
+#      manageiq_vmdb:
+#        vmdb: "{{ vmdb_object }}"
+#        action: add_provider_vms
+#        data:
+#          uid_ems:
+#            - "{{ item.tagged_instances[0].id }}"
+#          provider:
+#            id: "{{ provider_id }}"
+#      with_items: "{{ instances.results }}"
