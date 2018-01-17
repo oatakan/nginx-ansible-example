@@ -21,8 +21,7 @@
           url: "{{ manageiq.api_url }}"
           token: "{{ manageiq.api_token }}"
           manageiq_validate_certs: false
-          cert:
-            force_basic_auth: false
+          force_basic_auth: false
 
     - name: get a vmdb object
       manageiq_vmdb:
