@@ -29,11 +29,21 @@
           client_cert: ''
           client_key: ''
 
-
     - name: get a vmdb object
       manageiq_vmdb:
         href: "{{ manageiq.service }}"
       register: vmdb_object
+
+    - name: Service Linking via an href slug
+      manageiq_vmdb:
+        href: "href_slug::{{ manageiq.service }}"
+        action: add_provider_vms
+        data:
+          uid_ems:
+            - "{{ item.tagged_instances[0].id }}"
+          provider:
+            id: "{{ cf_provider_id }}"
+      with_items: "{{ instances.results }}"
 
     - name: link service via an object
       manageiq_vmdb:
