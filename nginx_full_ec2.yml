@@ -1,4 +1,4 @@
-- include: nginx_infra_ec2.yml
+- import_playbook: nginx_infra_ec2.yml
 
 - hosts: localhost
   gather_facts: no
@@ -24,6 +24,6 @@
       tags:
         - addhost
 
-- include: provision_nginx_no_ssl.yml
+- import_playbook: provision_nginx_no_ssl.yml
 
-# - include: nginx_domain.yml
+# - import_playbook: nginx_domain.yml
