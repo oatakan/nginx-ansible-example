@@ -11,14 +11,11 @@
           "tag:name": "{{ ec2_name_prefix }}-*"
       register: ec2_instances
 
-    - debug:
-        msg: "{{ ec2_instances.instances }}"
-
     - name: terminate instances
       ec2:
         region: "{{ ec2_region }}"
         state: "absent"
-        instance_ids: "{{ ec2_instances.instances | map(attribute='id') | list }}"
+        instance_ids: "{{ ec2_instances.instances | map(attribute='instance_id') | list }}"
 
     - name: Get record for router ELB DNS Entry
       route53:
