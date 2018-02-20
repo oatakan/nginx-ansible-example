@@ -24,6 +24,6 @@
       tags:
         - addhost
 
-- include: provision_nginx.yml
+- include: provision_nginx_no_ssl.yml
 
 # - include: nginx_domain.yml
