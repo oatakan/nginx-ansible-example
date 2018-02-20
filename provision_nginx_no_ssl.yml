@@ -11,7 +11,6 @@
 
   roles:
     - role: jdauphant.nginx
-      nginx_configs:
       nginx_sites:
         default:
           - listen 80
