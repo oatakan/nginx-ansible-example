@@ -2,13 +2,17 @@
   become: no
   tasks:
     - name: get ec2 instance information
-      ec2_remote_facts:
+      ec2_instance_facts:
         region: "{{ ec2_region }}"
         filters:
           vpc-id: "{{ ec2_vpc_id }}"
           "tag:app": nginx_standalone
           "tag:pod": "{{ ec2_name_prefix }}"
+          "tag:name": "{{ ec2_name_prefix }}-*"
       register: ec2_instances
+
+    - debug:
+        msg: "{{ ec2_instances.instances }}"
 
     - name: terminate instances
       ec2:
