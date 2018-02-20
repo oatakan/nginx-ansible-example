@@ -8,7 +8,6 @@
           vpc-id: "{{ ec2_vpc_id }}"
           "tag:app": nginx_standalone
           "tag:pod": "{{ ec2_name_prefix }}"
-          "tag:name": "{{ ec2_name_prefix }}-*"
       register: ec2_instances
 
     - name: terminate instances
