@@ -1,6 +1,7 @@
 ---
 - name: Current OS version information
-  debug: var=os_info
+  debug:
+    var: os_info
   vars:
     os_info:
       distribution: "{{ ansible_distribution }}"
@@ -11,7 +12,7 @@
 - name: Ensure deltarpm installed
   yum: name=deltarpm state=latest
 
-- name: Update CentOS packages
+- name: Update packages
   yum: name=* state=latest update_cache=yes
 
 - name: Gather facts after upgrade
