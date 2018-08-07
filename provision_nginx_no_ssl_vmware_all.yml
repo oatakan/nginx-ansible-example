@@ -1,0 +1,41 @@
+- hosts: all
+  pre_tasks:
+    - name: install epel
+      yum:
+        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+        state: present
+    - name: add www-data user
+      user:
+        name: www-data
+        state: present
+
+  roles:
+    - role: geerlingguy.nginx
+      nginx_vhosts:
+        - listen: "80 default_server"
+          server_name: "_"
+          root: "/usr/share/nginx/html"
+          index: "index.php index.html index.htm"
+
+  post_tasks:
+    - name: copy Template.html
+      template:
+        src: Template.html.j2
+        dest: /usr/share/nginx/html/index.html
+
+    - name: proper response from nginx is received
+      uri:
+        url: http://{{ inventory_hostname }}/
+        return_content: yes
+        validate_certs: no
+      register: response
+      until: "'This is the sites URL' in response.content"
+      retries: 10
+      delay: 1
+      ignore_errors: yes
+
+    - name: output url
+      debug:
+        msg: 'application is available at http://{{ inventory_hostname }}/'
+      when: response | success
+
