@@ -1,0 +1,7 @@
+- hosts: localhost
+  become: no
+  vars_files:
+    - nginx-nodes-openstack.yml
+  roles:
+    - role: ansible-role-os-stack
+      role_action: deprovision
