@@ -25,7 +25,7 @@
 
     - name: proper response from nginx is received
       uri:
-        url: http://{{ inventory_hostname }}/
+        url: http://{{ ansible_host | default(ansible_ssh_host) }}/
         return_content: yes
         validate_certs: no
       register: response
@@ -36,6 +36,6 @@
 
     - name: output url
       debug:
-        msg: 'application is available at http://{{ inventory_hostname }}/'
+        msg: 'application is available at http://{{ ansible_host | default(ansible_ssh_host) }}/'
       when: response | success
 
