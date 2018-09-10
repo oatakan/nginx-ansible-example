@@ -1,0 +1,11 @@
+---
+nodes:
+  - name: nginx
+    role: nginx
+    app_name: nginx_standalone
+    flavor: m1.small
+    image: CentOS 7 1808
+    key_name: ansible-oatakan
+    volume_size: 10
+    nics:
+      - net-name: private_network

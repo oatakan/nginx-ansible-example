@@ -4,6 +4,12 @@
 - src: https://github.com/oatakan/ansible-role-vmware.git
   version: origin/master
 
+- src: https://github.com/oatakan/ansible-role-openstack.git
+  version: origin/master
+
+- src: https://github.com/oatakan/ansible-role-os-stack.git
+  version: origin/master
+
 - src: jdauphant.ssl-certs
 
 - src: jdauphant.nginx
