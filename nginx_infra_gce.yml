@@ -3,4 +3,4 @@
   vars_files:
     - nginx-nodes-gce.yml
   roles:
-    - ansible-role-gcp-compute
+    - ansible-role-gce
