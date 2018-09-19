@@ -43,5 +43,5 @@
     - name: output url
       debug:
         msg: 'application is available at https://{{ ansible_host | default(ansible_ssh_host) }}/'
-      when: response | success
+      when: response is success
 
