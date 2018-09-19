@@ -6,3 +6,4 @@ nodes:
     network_tag: http-server
     machine_type: n1-standard-1
     image: rhel-7-v20180911
+    os_disk_size: 30

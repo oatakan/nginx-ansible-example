@@ -13,6 +13,9 @@
 - src: https://github.com/oatakan/ansible-role-gce.git
   version: origin/master
 
+- src: https://github.com/oatakan/ansible-role-gcp-compute.git
+  version: origin/master
+
 - src: jdauphant.ssl-certs
 
 - src: jdauphant.nginx
