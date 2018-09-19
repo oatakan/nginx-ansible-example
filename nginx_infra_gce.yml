@@ -2,5 +2,13 @@
   become: no
   vars_files:
     - nginx-nodes-gce.yml
-  roles:
-    - ansible-role-gce
+  pre_tasks:
+    - name: print env variables
+      shell: printenv
+      register: print_env
+
+    - debug:
+        var: print_env.stdout
+
+  #roles:
+  #  - ansible-role-gce
