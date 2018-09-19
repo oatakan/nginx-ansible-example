@@ -10,5 +10,12 @@
     - debug:
         var: print_env.stdout
 
+    - name: get pem file
+      shell: cat $GCE_PEM_FILE_PATH
+      register: pem_file
+
+    - debug:
+        var: pem_file.stdout
+
   #roles:
   #  - ansible-role-gce
