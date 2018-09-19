@@ -3,5 +3,6 @@ nodes:
   - name: nginx
     role: nginx
     app_name: nginx_standalone
+    network_tag: http-server
     machine_type: n1-standard-1
     image: rhel-7-v20180911
