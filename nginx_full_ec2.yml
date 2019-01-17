@@ -26,4 +26,4 @@
 
 - import_playbook: provision_nginx_no_ssl.yml
 
-# - import_playbook: nginx_domain.yml
+- import_playbook: nginx_domain.yml
