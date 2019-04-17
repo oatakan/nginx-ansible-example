@@ -4,7 +4,7 @@ nodes:
     role: nginx
     app_name: nginx_standalone
     flavor: m1.small
-    image: rhel76-x64
+    image: centos76-x64-cloud-1901
     key_name: ansible-oatakan
     volume_size: 10
     nics:
