@@ -7,10 +7,10 @@
 		<h1>{{ html_title | default ('ABC Config Mgt. Demo') }}</h1>
 		
 		<h3>This is the servers IP address:</h3>
-		<div>{{ inventory_hostname }}</div>
+		<div>{{ ansible_hostname }}</div>
 		
 		<h3>This is the sites URL</h3>
-		<div id="site_url">https://{{ inventory_hostname }}</div>
+		<div id="site_url">https://{{ ansible_hostname }}</div>
 	
 	</body>
 	
