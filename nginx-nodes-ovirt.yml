@@ -1,0 +1,27 @@
+---
+
+providers:
+  ovirt:
+    cluster: pele-Local
+nodes:
+  - name: nginx
+    role: nginx
+    app_name: nginx_standalone
+    networks:
+    - name: ovirtmgmt
+      ip: 192.168.1.53
+      netmask: 255.255.255.0
+      gateway: 192.168.1.254
+      domain: home.ad
+      dns_servers:
+      - 8.8.8.8
+      - 8.8.4.4
+    domain: home.ad
+    dns_servers:
+    - 8.8.8.8
+    - 8.8.4.4
+    memory: 4096
+    cpu: 2
+    user_name: root
+    root_password: object00
+    template: centos76-generic-cloud-1901

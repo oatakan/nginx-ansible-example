@@ -1,0 +1,12 @@
+---
+
+- name: Deploy VM
+  hosts: all
+  gather_facts: False
+  connection: local
+  become: no
+  vars_files:
+    - nginx-nodes-ovirt.yml
+
+  roles:
+    - ansible-role-ovirt
