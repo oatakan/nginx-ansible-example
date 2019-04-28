@@ -16,10 +16,10 @@ nodes:
       dns_servers:
       - 8.8.8.8
       - 8.8.4.4
-#    disks:
-#    - name: GlanceDisk-fe03ebf
-#      name_prefix: no
-#      size: 40GiB
+    disks:
+    - name: GlanceDisk-fe03ebf
+      name_prefix: no
+      size: 40GiB
     domain: home.ad
     dns_servers:
     - 8.8.8.8
