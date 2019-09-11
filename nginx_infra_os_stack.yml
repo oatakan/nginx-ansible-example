@@ -1,6 +1,6 @@
 - hosts: localhost
   become: no
   vars_files:
-    - nginx-nodes-openstack.yml
+    - node-config/nginx-nodes-openstack.yml
   roles:
     - ansible-role-os-stack

@@ -1,6 +1,6 @@
 - hosts: localhost
   become: no
   vars_files:
-    - nginx-nodes-gce.yml
+    - node-config/nginx-nodes-gce.yml
   roles:
     - ansible-role-gce

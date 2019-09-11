@@ -1,0 +1,8 @@
+---
+- name: provision vm
+  hosts: localhost
+  become: no
+  vars_files:
+    - node-config/nginx-nodes-vmware.yml
+  roles:
+    - ansible-role-vmware

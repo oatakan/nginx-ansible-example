@@ -1,0 +1,32 @@
+---
+providers:
+  vcenter:
+    datacenter: cloud
+    cluster: mylab
+    resource_pool: manageto
+
+nodes:
+  - name: nginx01
+    role: nginx
+    app_name: nginx_standalone
+    networks:
+    - name: mgmt
+      ip: 192.168.1.52
+      netmask: 255.255.255.0
+      gateway: 192.168.1.254
+      domain: home.ad
+      dns_servers:
+      - 192.168.1.254
+      - 8.8.4.4
+    domain: home.ad
+    memory: 4096
+    cpu: 2
+    template: centos76-x64-bigdisk_v1
+    snapshot_src: Linked
+    linked_clone: True
+    customization:
+      domain: home.ad
+      dns_servers:
+      - 8.8.8.8
+      - 8.8.4.4
+      password: '{{ ansible_password | default(ansible_ssh_password) | b64encode | b64decode }}'

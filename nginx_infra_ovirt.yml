@@ -6,7 +6,7 @@
   connection: local
   become: no
   vars_files:
-    - nginx-nodes-ovirt.yml
+    - node-config/nginx-nodes-ovirt.yml
 
   roles:
     - ansible-role-ovirt
